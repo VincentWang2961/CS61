@@ -5,3 +5,7 @@ https://sp21.datastructur.es/index.html
 Labs and Projects
 
 https://sp21.datastructur.es/index.html
+
+Handbook
+
+https://joshhug.gitbooks.io/hug61b/content/
