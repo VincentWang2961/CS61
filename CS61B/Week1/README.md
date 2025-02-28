@@ -31,3 +31,9 @@ Non-static method, aka instance method `public void makeNoise()`
 > For single .java we can use java directly run it's code if it's independent
 >
 > For a .java program which depends on other classes or files, have to use javac to compile first, then use java to run it, else it will response error messages
+
+Diff between Static and Instance
+
+1. Static methods are invoked uisng the calss name
+2. Instance methods are invoked using an instance name
+3. Static methods can not access my instance variables 
