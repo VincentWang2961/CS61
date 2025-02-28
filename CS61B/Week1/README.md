@@ -1,3 +1,5 @@
+### 1.1
+
 The course is about algorithms and data structures
 
 1. All code in Java must be part of a calss
@@ -13,3 +15,19 @@ The course is about algorithms and data structures
 1. To declare a function in Java, use `public static`
 2. All paremeters of a function must have a type, and the function itself must have a return type.
 3. All functions must be part of a class, called 'method'
+
+### 1.2
+
+1. Classes can contain not just funcs but data
+
+Instance variable `public int weightInPounds`
+
+Constructor, determines how to instantiate the class
+
+Non-static method, aka instance method `public void makeNoise()`
+
+> Something else which might not important:
+>
+> For single .java we can use java directly run it's code if it's independent
+>
+> For a .java program which depends on other classes or files, have to use javac to compile first, then use java to run it, else it will response error messages
