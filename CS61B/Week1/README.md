@@ -34,6 +34,6 @@ Non-static method, aka instance method `public void makeNoise()`
 
 Diff between Static and Instance
 
-1. Static methods are invoked uisng the calss name
-2. Instance methods are invoked using an instance name
+1. Static methods are invoked uisng the calss name `Dog.makeNoise();`
+2. Instance methods are invoked using an instance name `maya = newDog(10); maya.makeNoise();`
 3. Static methods can not access my instance variables 
