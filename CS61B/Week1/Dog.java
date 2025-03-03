@@ -1,6 +1,7 @@
 public class Dog {
 
     public int weight;
+    public static String name = "Dog";
 
     public Dog(int initWeight) {
         weight = initWeight;
@@ -8,9 +9,11 @@ public class Dog {
 
     public void makeNoise() {
         if (weight < 10) {
-            System.out.println("bark!");
+            System.out.println("Yip!");
+        } else if (weight < 30) {
+            System.out.println("Bark!");
         } else {
-            System.out.println("woof!");
+            System.out.println("Wooof!");
         }
     }
 

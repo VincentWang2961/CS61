@@ -17,5 +17,6 @@ public class Playground {
         bigger2.makeNoise();
 
         System.out.println("Finished...");
+        System.out.println(smallDog.name);
     }
 }
