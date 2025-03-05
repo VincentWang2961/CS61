@@ -6,6 +6,13 @@ Each Java type has a diff way to interpret the bits, if declareing a variblae of
 
 Java fist allocates a box of bits for each instance variable of the class and fills then with a default value(e.g. 0, null)
 
+Passing parematers obeys the same rule: simply copy the bits to the new scope
+
+Arrays are also objects `int[] x = new int[]{0, 1, 2, 3, 4, 5};`
+
+```java
+```
+
 
 
 ### 2.2
