@@ -11,6 +11,19 @@ Passing parematers obeys the same rule: simply copy the bits to the new scope
 Arrays are also objects `int[] x = new int[]{0, 1, 2, 3, 4, 5};`
 
 ```java
+public class IntList {
+  public int first;
+  public IntList rest;        
+
+  public IntList(int f, IntList r) {
+    first = f;
+    rest = r;
+  }
+  
+  IntList L = new IntList(5, null);
+	L.rest = new IntList(10, null);
+	L.rest.rest = new IntList(15, null);
+}
 ```
 
 
