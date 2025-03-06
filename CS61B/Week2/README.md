@@ -26,7 +26,7 @@ public class IntList {
 }
 ```
 
-
-
 ### 2.2
+
+`private`
 
