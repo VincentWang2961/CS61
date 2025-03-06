@@ -21,6 +21,7 @@ public class IntList {
         IntList L = new IntList(15, null);
         L = new IntList(10, L);
         L = new IntList(5, L);
+        L = new IntList(0, L);
 
         System.out.println(L.size());
     }
