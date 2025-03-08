@@ -39,3 +39,7 @@ Hide implementation details from users of your class:
 
 If you use a `public` category, you should never remove it
 
+Nesting a class: Can move a class inside of another class
+
+Make the nested class priavte if other classes should never use the nested class
+
