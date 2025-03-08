@@ -31,3 +31,11 @@ public class IntList {
 
 `private`
 
+Hide implementation details from users of your class:
+
+​	Less for user of class to understand
+
+​	Safe for you to change private methods(implementation)
+
+If you use a `public` category, you should never remove it
+
