@@ -1,13 +1,21 @@
 public class SLList {
     private IntNode first;
+    private int size;
+
+    public SLList() {
+        first = null;
+        size = 0;
+    }
 
     // Create a list of integers using the IntNode class
     public SLList(int x) {
         first = new IntNode(x, null);
+        size = 1;
     }
 
     public void addFirst(int x) {
         first = new IntNode(x, first);
+        size = size + 1;
     }
 
     public int getFirst() {
@@ -25,6 +33,8 @@ public class SLList {
 
         // Add the new element to the end of the list
         p.next = new IntNode(x, null);
+
+        size = size + 1;
     }
 
     public int sizeOld() {
