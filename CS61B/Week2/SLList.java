@@ -4,13 +4,13 @@ public class SLList {
 
     // Create an empty list of integers
     public SLList() {
-        sentinel = new IntNode(13, null);
+        sentinel = new IntNode(0, null);
         size = 0;
     }
 
     // Create a list of integers using the IntNode class
     public SLList(int x) {
-        sentinel = new IntNode(13, null);
+        sentinel = new IntNode(0, null);
         sentinel.next = new IntNode(x, null);
         size = 1;
     }
