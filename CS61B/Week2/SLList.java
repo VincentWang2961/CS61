@@ -2,6 +2,7 @@ public class SLList {
     private IntNode first;
     private int size;
 
+    // Create an empty list of integers
     public SLList() {
         first = null;
         size = 0;
@@ -24,19 +25,22 @@ public class SLList {
 
     public void addLast(int x ) {
         // Create a pointer to the first element of the list
-        IntNode p = first;
-
-        // Move p until it reaches the end of the list
-        while (p.next != null) {
-            p = p.next;
+        if (size == 0) {
+            first = new IntNode(x, null);
+        } else {
+            IntNode p = first;
+            // Move p until it reaches the end of the list
+            while (p.next != null) {
+                p = p.next;
+            }
+            // Add the new element to the end of the list
+            p.next = new IntNode(x, null);
         }
-
-        // Add the new element to the end of the list
-        p.next = new IntNode(x, null);
 
         size = size + 1;
     }
 
+    /*
     public int sizeOld() {
         IntNode p = first;
         int size = 0;
@@ -48,6 +52,7 @@ public class SLList {
 
         return size;
     }
+    
 
     // Return the size of the list using recursion
     // This is a helper method
@@ -57,9 +62,10 @@ public class SLList {
         }
         return 1 + size(p.next);
     }
+    */
 
     public int size() {
-        return size(first);
+        return size;
     }
 
     public static void main(String[] args) {
@@ -74,5 +80,9 @@ public class SLList {
         System.out.println(L.getFirst());
         System.out.println(L.size());
 
+        SLList s1 = new SLList();
+        s1.addLast(5);
+        s1.addLast(10);
+        System.out.println(s1.size());
     }
 }
