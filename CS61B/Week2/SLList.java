@@ -24,20 +24,21 @@ public class SLList {
     }
 
     public void addLast(int x ) {
-        // Create a pointer to the first element of the list
-        if (size == 0) {
+        size += 1;
+        
+        if (first == null) {
             first = new IntNode(x, null);
-        } else {
-            IntNode p = first;
-            // Move p until it reaches the end of the list
-            while (p.next != null) {
-                p = p.next;
-            }
-            // Add the new element to the end of the list
-            p.next = new IntNode(x, null);
+            return;
         }
 
-        size = size + 1;
+        // Create a pointer to the first element of the list
+        IntNode p = first;
+        // Move p until it reaches the end of the list
+        while (p.next != null) {
+            p = p.next;
+        }
+        // Add the new element to the end of the list
+        p.next = new IntNode(x, null);
     }
 
     /*
