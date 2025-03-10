@@ -44,3 +44,4 @@ Nesting a class: Can move a class inside of another class
 Make the nested class priavte if other classes should never use the nested class
 
 To get the size faster, can maintain a special size variavle that caces the size of the list
+
