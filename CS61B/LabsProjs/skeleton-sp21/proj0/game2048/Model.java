@@ -178,6 +178,26 @@ public class Model extends Observable {
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
         // Handling the first instance
+        if (emptySpaceExists(b)) {
+            return true;
+        }
+
+        // Handling the second instance
+        for (int col = 0; col < b.size(); col += 1) {
+            for (int row = 0; row < b.size(); row += 1) {
+                // Value of the current tile
+                int curr = b.tile(col, row).value();
+                // Get the value of all directions of current tile
+                int currN = col - 1 > 0 ? b.tile(col - 1, row).value() : 0;
+                int currS = col + 1 < b.size() ? b.tile(col + 1, row).value() : 0;
+                int currW = row - 1 > 0 ? b.tile(col, row - 1).value() : 0;
+                int currE = row + 1 < b.size() ? b.tile(col, row + 1).value() : 0;
+                // Expression
+                if (curr == currN || curr == currS || curr == currW || curr == currE) {
+                    return true;
+                }
+            }
+        }
 
         return false;
     }
