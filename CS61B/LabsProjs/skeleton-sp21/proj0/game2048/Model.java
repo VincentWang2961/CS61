@@ -114,48 +114,49 @@ public class Model extends Observable {
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
 
-        // Need to consider how to get the tiles currently on the board
-        // Only considering north side
-        if (side == Side.NORTH) {
-            // Process each column
-            for (int col = 0; col < size(); col += 1) {
-                // Make a flag that indicates whether there's a tile that has been merged
-                boolean merged = false;
-                // Process each row from second row to bottom
-                for (int row = size() - 2; row >= 0; row -= 1) {
-                    // Set the current tile
-                    Tile currTile = board.tile(col, row);
-                    // Skip if there's no tile at this position
-                    if (currTile == null) {
+        // Handling direction
+        board.setViewingPerspective(side);
+        // Process each column
+        for (int col = 0; col < size(); col += 1) {
+            // Make a flag that indicates whether there's a tile that has been merged
+            boolean merged = false;
+            // Process each row from second row to bottom
+            for (int row = size() - 2; row >= 0; row -= 1) {
+                // Set the current tile
+                Tile currTile = board.tile(col, row);
+                // Skip if there's no tile at this position
+                if (currTile == null) {
+                    continue;
+                }
+                // Find the farthest position this tile can move to (moving north)
+                int newRow = row;
+                while (newRow + 1 < size()) {
+                    Tile northTile = board.tile(col, newRow + 1);
+                    if (northTile == null) {
+                        newRow += 1;
                         continue;
-                    }
-                    // Find the farthest position this tile can move to (moving north)
-                    int newRow = row;
-                    while (newRow + 1 < size()) {
-                        Tile northTile = board.tile(col, newRow + 1);
-                        if (northTile == null) {
-                            newRow += 1;
-                            continue;
-                        } else if (northTile.value() == currTile.value() && !merged) {
-                            newRow += 1;
-                            break;
-                        }
+                    } else if (northTile.value() == currTile.value() && !merged) {
+                        newRow += 1;
                         break;
                     }
-                    // If the tile can move (newRow is different from original row)
-                    if (newRow != row) {
-                        // If merging, the score needs to be updated
-                        if (board.move(col, newRow, currTile)) {
-                            score += currTile.value() * 2;
-                            merged = true;
-                        } else {
-                            merged = false;
-                        }
-                        changed = true;
+                    break;
+                }
+                // If the tile can move (newRow is different from original row)
+                if (newRow != row) {
+                    // If merging, the score needs to be updated
+                    if (board.move(col, newRow, currTile)) {
+                        score += currTile.value() * 2;
+                        merged = true;
+                    } else {
+                        merged = false;
                     }
+                    changed = true;
                 }
             }
         }
+
+        // Reset the viewing perspective
+        board.setViewingPerspective(Side.NORTH);
 
         checkGameOver();
         if (changed) {
