@@ -129,9 +129,7 @@ public class Model extends Observable {
                     }
                     // Find the farthest position this tile can move to (moving north)
                     int newRow = row;
-                    while (newRow + 1 < size() && board.tile(col, newRow + 1) == null) {
-                        newRow += 1;
-                    }
+                    for(Tile northTile = board.tile(col, newRow); newRow + 1 < size() && (northTile == null || northTile.value() == currTile.value()) ; newRow += 1);
                     // If the tile can move (newRow is different from original row)
                     if (newRow != row) {
                         board.move(col, newRow, currTile);
