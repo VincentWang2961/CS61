@@ -121,21 +121,20 @@ public class Model extends Observable {
             for (int col = 0; col < size(); col += 1) {
                 // Process each row from second row to bottom
                 for (int row = 1; row < size(); row += 1) {
-                    Tile t = board.tile(col, row);
+                    // Set the current tile
+                    Tile currTile = board.tile(col, row);
                     // Skip if there's no tile at this position
-                    if (t == null) {
+                    if (currTile == null) {
                         continue;
                     }
-
-                    // Find the farthest position this tile can move to (moving upward)
+                    // Find the farthest position this tile can move to (moving north)
                     int newRow = row;
                     while (newRow + 1 < size() && board.tile(col, newRow + 1) == null) {
                         newRow += 1;
                     }
-
                     // If the tile can move (newRow is different from original row)
                     if (newRow != row) {
-                        board.move(col, newRow, t);
+                        board.move(col, newRow, currTile);
                         changed = true;
                     }
                 }
