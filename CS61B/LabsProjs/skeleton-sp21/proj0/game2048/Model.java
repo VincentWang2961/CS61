@@ -115,6 +115,32 @@ public class Model extends Observable {
         // changed local variable to true.
 
         // Need to consider how to get the tiles currently on the board
+        // Only considering north side
+        if (side == Side.NORTH) {
+            // Process each column
+            for (int col = 0; col < size(); col += 1) {
+                // Process each row from second row to bottom
+                for (int row = 1; row < size(); row += 1) {
+                    Tile t = board.tile(col, row);
+                    // Skip if there's no tile at this position
+                    if (t == null) {
+                        continue;
+                    }
+
+                    // Find the farthest position this tile can move to (moving upward)
+                    int newRow = row;
+                    while (newRow + 1 < size() && board.tile(col, newRow + 1) == null) {
+                        newRow += 1;
+                    }
+
+                    // If the tile can move (newRow is different from original row)
+                    if (newRow != row) {
+                        board.move(col, newRow, t);
+                        changed = true;
+                    }
+                }
+            }
+        }
 
         checkGameOver();
         if (changed) {
