@@ -136,12 +136,11 @@ public class Model extends Observable {
                         if (northTile == null) {
                             newRow += 1;
                             continue;
-                        } else if (northTile.value() == currTile.value() && merged == false) {
+                        } else if (northTile.value() == currTile.value() && !merged) {
                             newRow += 1;
                             break;
-                        } else {
-                            break;
                         }
+                        break;
                     }
                     // If the tile can move (newRow is different from original row)
                     if (newRow != row) {
