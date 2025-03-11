@@ -119,6 +119,8 @@ public class Model extends Observable {
         if (side == Side.NORTH) {
             // Process each column
             for (int col = 0; col < size(); col += 1) {
+                // Make a flag that indicates whether there's a tile that has been merged
+                boolean merged = false;
                 // Process each row from second row to bottom
                 for (int row = size() - 2; row >= 0; row -= 1) {
                     // Set the current tile
@@ -134,7 +136,7 @@ public class Model extends Observable {
                         if (northTile == null) {
                             newRow += 1;
                             continue;
-                        } else if (northTile.value() == currTile.value()) {
+                        } else if (northTile.value() == currTile.value() && merged == false) {
                             newRow += 1;
                             break;
                         } else {
@@ -146,6 +148,9 @@ public class Model extends Observable {
                         // If merging, the score needs to be updated
                         if (board.move(col, newRow, currTile)) {
                             score += currTile.value() * 2;
+                            merged = true;
+                        } else {
+                            merged = false;
                         }
                         changed = true;
                     }
