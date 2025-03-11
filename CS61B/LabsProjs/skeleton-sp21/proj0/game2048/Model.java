@@ -120,7 +120,7 @@ public class Model extends Observable {
             // Process each column
             for (int col = 0; col < size(); col += 1) {
                 // Process each row from second row to bottom
-                for (int row = 1; row < size(); row += 1) {
+                for (int row = 0; row < size(); row += 1) {
                     // Set the current tile
                     Tile currTile = board.tile(col, row);
                     // Skip if there's no tile at this position
@@ -132,7 +132,10 @@ public class Model extends Observable {
                     for(Tile northTile = board.tile(col, newRow); newRow + 1 < size() && (northTile == null || northTile.value() == currTile.value()) ; newRow += 1);
                     // If the tile can move (newRow is different from original row)
                     if (newRow != row) {
-                        board.move(col, newRow, currTile);
+                        // If merging, the score needs to be updated
+                        if (board.move(col, newRow, currTile)) {
+                            score += currTile.value() * 2;
+                        }
                         changed = true;
                     }
                 }
