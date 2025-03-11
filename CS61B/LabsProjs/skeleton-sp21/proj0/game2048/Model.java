@@ -120,7 +120,7 @@ public class Model extends Observable {
             // Process each column
             for (int col = 0; col < size(); col += 1) {
                 // Process each row from second row to bottom
-                for (int row = 0; row < size(); row += 1) {
+                for (int row = size() - 2; row >= 0; row -= 1) {
                     // Set the current tile
                     Tile currTile = board.tile(col, row);
                     // Skip if there's no tile at this position
@@ -129,7 +129,18 @@ public class Model extends Observable {
                     }
                     // Find the farthest position this tile can move to (moving north)
                     int newRow = row;
-                    for(Tile northTile = board.tile(col, newRow); newRow + 1 < size() && (northTile == null || northTile.value() == currTile.value()) ; newRow += 1);
+                    while (newRow + 1 < size()) {
+                        Tile northTile = board.tile(col, newRow + 1);
+                        if (northTile == null) {
+                            newRow += 1;
+                            continue;
+                        } else if (northTile.value() == currTile.value()) {
+                            newRow += 1;
+                            break;
+                        } else {
+                            break;
+                        }
+                    }
                     // If the tile can move (newRow is different from original row)
                     if (newRow != row) {
                         // If merging, the score needs to be updated
