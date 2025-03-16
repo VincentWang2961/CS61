@@ -1,28 +1,32 @@
-public class AList {
-    int [] items;
-    int size;
+public class AList<DataType> {
+    private DataType [] items;
+    private int size;
 
     public AList() {
-        items = new int[100];
+        items = (DataType[]) new Object[100];
         size = 0;
     }
 
-    public void addLast(int x) {
+    private void resize(int capacity) {
+        DataType[] a = (DataType[]) new Object[capacity];
+        System.arraycopy(items, 0, a, 0, size);
+        items = a;
+    }
+
+    public void addLast(DataType x) {
         if (size == items.length) {
-            int[] a = new int[size + 1];
-            System.arraycopy(items, 0, a, 0, size);
-            items = a;
+            resize(size * 2);
         }
-        
+
         items[size] = x;
         size += 1;
     }
 
-    public int getLast() {
+    public DataType getLast() {
         return items[size - 1];
     }
 
-    public int get(int i) {
+    public DataType get(int i) {
         return items[i];
     }
 
@@ -30,13 +34,9 @@ public class AList {
         return size;
     }
 
-    public int removeLast() {
-        int x = getLast();
+    public DataType removeLast() {
+        DataType x = getLast();
         size -= 1;
         return x;
-    }
-
-    public static void mian (String[] args) {
-        System.out.println("Hello World");
     }
 }
