@@ -8,6 +8,7 @@ public class AList<DataType> {
     }
 
     private void resize(int capacity) {
+        // Generic array creation is not allowed in Java
         DataType[] a = (DataType[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, size);
         items = a;
@@ -36,6 +37,8 @@ public class AList<DataType> {
 
     public DataType removeLast() {
         DataType x = getLast();
+        // Set the last element to null to destroy the reference
+        items[size - 1] = null;
         size -= 1;
         return x;
     }

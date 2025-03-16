@@ -48,3 +48,6 @@ Array based list
 
 Array resizing: to solve the problem that array based list has a limited length
 
+When creating an array of referebces to Glorps `(Glorps []) new Object[cap]`, causes a compiler warning which should ignore
+
+Not just use `new Glorp[cap]`, will cause a generic array creation error
