@@ -36,8 +36,15 @@ Parameters: (Source array, Start position in sources, Target array, Start positi
 
 2D Arrays: array boxes can contain references to arrays
 
-Array indicaes can be computed ar runtime
+Array indicaes can be computed at runtime
 
 Class member variable names cannot be computed and used at runtime, the conlt(ez) way to access a member of a clas is with hard-code dot notation
 
 ![Screenshot 2025-03-12 at 9.45.29 am](/Users/vincent/Library/Application Support/typora-user-images/Screenshot 2025-03-12 at 9.45.29 am.png)
+
+### 2.5
+
+Array based list
+
+Array resizing: to solve the problem that array based list has a limited length
+
