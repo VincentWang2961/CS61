@@ -14,6 +14,9 @@ public class IntListExercises {
             head.first += c;
             head = head.rest;
         }
+        // Iterate the last node with null rest
+        head.first += c;
+        head = head.rest;
     }
 
     /**
@@ -54,7 +57,13 @@ public class IntListExercises {
         while (x > 10) {
             x = x / 10;
         }
-        int firstDigit = x % 10;
+        // To get the first digit properly with correct digit when x is lower than 10
+        int firstDigit;
+        if (x == 10) {
+            firstDigit = 1;
+        } else {
+            firstDigit = x % 10;
+        }
         return firstDigit == lastDigit;
     }
 
@@ -77,6 +86,6 @@ public class IntListExercises {
             lst.first *= lst.first;
         }
 
-        return currElemIsPrime || squarePrimes(lst.rest);
+        return squarePrimes(lst.rest) || currElemIsPrime;
     }
 }
