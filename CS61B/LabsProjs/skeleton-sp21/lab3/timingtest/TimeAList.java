@@ -38,6 +38,7 @@ public class TimeAList {
             }
             Double timeInSeconds = sw.elapsedTime();
 
+            // Add the data to the columns
             Ns.addLast(testingList[testingNum]);
             times.addLast(timeInSeconds);
             opCounts.addLast(testingList[testingNum]);
@@ -46,3 +47,15 @@ public class TimeAList {
         printTimingTable(Ns, times, opCounts);
     }
 }
+/*
+            N     time (s)        # ops  microsec/op
+------------------------------------------------------------
+        1000         0.00         1000         1.00
+        2000         0.00         2000         0.50
+        4000         0.01         4000         1.25
+        8000         0.02         8000         2.13
+       16000         0.06        16000         3.75
+       32000         0.15        32000         4.72
+       64000         0.47        64000         7.34
+      128000         1.45       128000        11.30
+*/
