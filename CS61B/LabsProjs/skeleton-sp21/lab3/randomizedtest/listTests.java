@@ -3,7 +3,7 @@ package randomizedtest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class testThreeAddThreeRemove {
+public class listTests {
     @Test
     public void testThreeAddThreeRemove() {
         // Init both lists
@@ -24,5 +24,10 @@ public class testThreeAddThreeRemove {
         assertEquals(L.removeLast(), B.removeLast());
         assertEquals(L.removeLast(), B.removeLast());
         assertEquals(L.removeLast(), B.removeLast());
+    }
+
+    @Test
+    public void randomizedTest() {
+
     }
 }
