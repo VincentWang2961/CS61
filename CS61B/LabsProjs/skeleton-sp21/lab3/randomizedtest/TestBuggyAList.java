@@ -34,26 +34,32 @@ public class TestBuggyAList {
     @Test
     public void randomizedTest() {
         AListNoResizing<Integer> L = new AListNoResizing<>();
+        BuggyAList<Integer> B = new BuggyAList<>();
 
-        int N = 500;
+        int N = 5000;
         for (int i = 0; i < N; i += 1) {
             int operationNumber = StdRandom.uniform(0, 4);
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
                 L.addLast(randVal);
-                System.out.println("addLast(" + randVal + ")");
+                B.addLast(randVal);
+                //System.out.println("addLast(" + randVal + ")");
             } else if (operationNumber == 1) {
                 // size
                 int size = L.size();
-                System.out.println("size: " + size);
-            } else if (operationNumber == 2) {
+                int Bsize = B.size();
+                //System.out.println("size: " + size);
+                //System.out.println("Bsize: " + Bsize);
+            } else if (operationNumber == 2 && L.size() > 0 && B.size() > 0) {
                 // getLast
-                int LL =L.getLast();
-                System.out.println("getLast(" + LL + ")");
-            } else if (operationNumber == 3) {
+                int LL = L.getLast();
+                int BL = B.getLast();
+                //System.out.println("getLast(" + LL + ")");
+            } else if (operationNumber == 3 && L.size() > 0 && B.size() > 0) {
                 int LR = L.removeLast();
-                System.out.println("removeLast(" + LR + ")");
+                int BR = B.removeLast();
+                //System.out.println("removeLast(" + LR + ")");
             }
         }
     }
